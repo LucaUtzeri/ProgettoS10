@@ -1,1 +1,1 @@
-li{text-decoration:none;font-size:400}/*# sourceMappingURL=todo.component.min.css.map */
+ul{list-style:none}li{border:solid #000;border-radius:20px;padding:10px;display:flex;justify-content:space-between;font-size:large;text-transform:capitalize}/*# sourceMappingURL=todo.component.min.css.map */
