@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Route } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TodoComponent } from './components/todo/todo.component';
+import { TodosComponent } from './components/todo/todo.component';
 import { CompletedComponent } from './components/completed/completed.component';
 
 const routes: Route[] = [
   {
     path: '',
-    component: TodoComponent
+    component: TodosComponent,
   },
   {
     path: 'completed',
@@ -22,9 +23,8 @@ const routes: Route[] = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    TodoComponent,
-    CompletedComponent,
-    TodoComponent
+    TodosComponent,
+    CompletedComponent
   ],
   imports: [
     BrowserModule,

@@ -1,2 +1,36 @@
-<input class="form-control me-2" placeholder="Add a Task" />
-<button class="btn btn-outline-success" id="input" type="submit">Add</button>
+<div>
+  <ng-container *ngIf="todos; else fetchMessage">
+    <div *ngIf="todos.length > 0; else emptyTask">
+      <div *ngFor="let todo of todos; let i = index" class="d-flex mt-2">
+        <h5>{{ todo.title }}</h5>
+        <button
+          type="button"
+          class="btn btn-success btn-sm ms-2"
+          (click)="checkTask(todo, i)"
+        >
+          Check
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #fetchMessage>
+    <h5>Fetching task...</h5>
+  </ng-template>
+  <ng-template #emptyTask>
+    <h5>Woops, no tasks added...</h5>
+  </ng-template>
+</div>
+<form class="mt-5">
+  <label for="newTitle">New Task</label>
+  <input
+    type="text"
+    name="taskTitle"
+    ngModel
+    required
+    #taskTitle="ngModel"
+    class="ms-2"
+  />
+  <button type="button" class="btn btn-success ms-2" (click)="addNew()">
+    Add New Task
+  </button>
+</form>
