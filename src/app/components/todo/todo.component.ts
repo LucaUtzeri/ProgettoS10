@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/service/task.service';
-import { Todo } from 'src/app/models/todo';
-import { NgForm } from '@angular/forms';
+import { Task } from 'src/app/models/task';
+
 
 
 @Component({
@@ -9,32 +9,21 @@ import { NgForm } from '@angular/forms';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodosComponent implements OnInit {
-  todos!: Todo[];
-  taskTitle: string | undefined;
+export class TodoComponent implements OnInit {
+  tasks: Task[] = this.taskSrv.tasks;
 
   constructor(private taskSrv: TaskService) { }
 
   ngOnInit(): void {
-    this.taskSrv.getTasks().then((todos) => {
-      this.todos = todos.filter((todo) => !todo.completed);
-    });
   }
 
-  async addNew() {
-    if (this.taskTitle != undefined) {
-      const nuovo = await this.taskSrv.addNewTask({
-        title: this.taskTitle,
-        completed: false,
-      });
-      this.todos.push(nuovo);
-      this.taskTitle = '';
-    }
-    return;
+  addTask(task: string): void {
+    this.taskSrv.addTask(task);
+    console.log(this.taskSrv.tasks);
   }
 
-  async checkTask(todo: Todo, i: number) {
-    await this.taskSrv.updateTask({ completed: true }, todo.id);
-    this.todos.splice(i, 1);
+  checkTask(id: number) {
+    this.taskSrv.completeTask(id);
   }
+
 }

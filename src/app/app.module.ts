@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TodosComponent } from './components/todo/todo.component';
+import { TodoComponent } from './components/todo/todo.component';
 import { CompletedComponent } from './components/completed/completed.component';
 
 const routes: Route[] = [
   {
     path: '',
-    component: TodosComponent,
+    component: TodoComponent,
   },
   {
     path: 'completed',
@@ -23,7 +23,7 @@ const routes: Route[] = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    TodosComponent,
+    TodoComponent,
     CompletedComponent
   ],
   imports: [

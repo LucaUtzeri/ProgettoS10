@@ -1,0 +1,7 @@
+<div>
+  <ul *ngFor="let task of completedTasks">
+    <li *ngIf="task.completed == true">
+      {{ this.completedTasks[task.id].title }}
+    </li>
+  </ul>
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/service/task.service';
-import { Todo } from 'src/app/models/todo';
+import { Task } from 'src/app/models/task';
 
 
 @Component({
@@ -10,13 +10,12 @@ import { Todo } from 'src/app/models/todo';
 })
 export class CompletedComponent implements OnInit {
 
-  todos!: Todo[];
+  completedTasks: Task[] = this.taskSrv.tasks;
 
   constructor(private taskSrv: TaskService) { }
 
   ngOnInit(): void {
-    this.taskSrv.getTasks().then((todos) => {
-      this.todos = todos.filter((task) => task.completed);
-    });
+
   }
+
 }

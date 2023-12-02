@@ -1,42 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../models/todo';
+import { Task } from '../models/task';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
 
-  todos: Todo[] = [];
+  tasks: Task[] = [];
 
   constructor() { }
 
-  getTasks(): Promise<Todo[]> {
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        res(this.todos)
-      }, 2000);
-    });
+  getTask() {
+    return this.tasks;
   }
 
-  addNewTask(todo: Partial<Todo>): Promise<Todo> {
-    return new Promise((res) => {
-      setTimeout(() => {
-        const newTodo: Partial<Todo> = { ...todo, id: this.todos.length + 1 };
-        this.todos.push(newTodo as Todo);
-        res(newTodo as Todo)
-      }, 2000);
-    });
+  addTask(task: string): void {
+    this.tasks.push({ id: this.tasks.length, title: task, completed: false })
   }
 
-  updateTask(newTodo: Partial<Todo>, id: number): Promise<Todo> {
-    return new Promise((res) => {
-      setTimeout(() => {
-        this.todos = this.todos.map((todo) => {
-          return todo.id === id ? { ...todo, ...newTodo } : todo;
-        });
-        const updated: Todo | undefined = this.todos.find((todo) => todo.id === id);
-        res(updated as Todo);
-      }, 2000);
-    });
+  completeTask(id: number) {
+    this.tasks[id].completed = !this.tasks[id].completed;
   }
+
 }
