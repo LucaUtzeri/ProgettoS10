@@ -19,7 +19,7 @@ export class TaskService {
   }
 
   completeTask(id: number) {
-    this.tasks[id].completed = !this.tasks[id].completed;
+    this.tasks[id].completed = !this.tasks[id].completed
   }
 
 }

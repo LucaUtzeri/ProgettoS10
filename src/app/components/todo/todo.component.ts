@@ -18,12 +18,12 @@ export class TodoComponent implements OnInit {
   }
 
   addTask(task: string): void {
-    this.taskSrv.addTask(task);
+    setTimeout(() => this.taskSrv.addTask(task), 2000);
     console.log(this.taskSrv.tasks);
   }
 
   checkTask(id: number) {
-    this.taskSrv.completeTask(id);
+    setTimeout(() => this.taskSrv.completeTask(id), 2000);
   }
 
 }
